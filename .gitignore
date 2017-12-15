@@ -4,3 +4,5 @@
 *.jfm
 bin/
 obj/
+*.dbmdl
+Database/packages/
