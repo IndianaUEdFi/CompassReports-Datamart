@@ -6,6 +6,7 @@
     <DeployScriptFileName>CompassReports.Db.CompassDataMart.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=#{DatabaseServer.Name};#{unless DatabaseServer.User.Name}Integrated Security=True#{/unless} #{if DatabaseServer.User.Name}User ID=#{DatabaseServer.User.Name}; Password=#{DatabaseServer.User.Password}#{/if};Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
+    <CreateNewDatabase>#{CompassReports.CreateNewDatabase}</CreateNewDatabase>
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="ApplicationUserName">
