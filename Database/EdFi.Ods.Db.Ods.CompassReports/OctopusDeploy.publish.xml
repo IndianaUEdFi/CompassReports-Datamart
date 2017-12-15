@@ -11,16 +11,16 @@
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="CompassReportEtlUserName">
-      <Value>#{CompassReport.EtlUser.Name}</Value>
+      <Value>#{CompassReports.EtlUser.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserPassword">
-      <Value>#{CompassReport.EtlUser.Password}</Value>
+      <Value>#{CompassReports.EtlUser.Password}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
-      <Value>#{CompassReport.ExpectedGraduationEndYear}</Value>
+      <Value>#{CompassReports.ExpectedGraduationEndYear}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationStartYear">
-      <Value>#{CompassReport.ExpectedGraduationStartYear}</Value>
+      <Value>#{CompassReports.ExpectedGraduationStartYear}</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>
