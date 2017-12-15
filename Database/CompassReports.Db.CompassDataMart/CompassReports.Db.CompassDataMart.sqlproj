@@ -80,8 +80,8 @@
     <Build Include="cmp\Tables\SchoolDimension.sql" />
     <Build Include="cmp\Tables\DemographicJunkDimension.sql" />
     <Build Include="Security\cmp.sql" />
-    <Build Include="Security\MigrationUsers.sql" />
-    <Build Include="Security\ApplicationUsers.sql" />
+    <Build Include="Security\MigrationRole.sql" />
+    <Build Include="Security\ApplicationRole.sql" />
     <PostDeploy Include="PostDeployment\PostDeployment.sql" />
     <None Include="PostDeployment\UserRoleAssignment.sql" />
     <None Include="PostDeployment\ETL\Manifest.sql" />

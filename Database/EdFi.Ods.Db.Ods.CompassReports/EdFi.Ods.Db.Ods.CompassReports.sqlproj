@@ -98,12 +98,12 @@
     <Build Include="Security\CompassReportUsers.sql" />
   </ItemGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="CompassReportUserName">
+    <SqlCmdVariable Include="CompassReportEtlUserName">
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="CompassReportUserPassword">
+    <SqlCmdVariable Include="CompassReportEtlUserPassword">
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>

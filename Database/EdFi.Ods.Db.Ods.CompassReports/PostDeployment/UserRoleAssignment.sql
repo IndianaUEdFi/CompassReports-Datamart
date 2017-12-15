@@ -16,7 +16,7 @@ DECLARE @DefaultSchema sysname,
 DECLARE userRoles CURSOR FOR
 SELECT * FROM (
 VALUES
-('dbo','CompassReportUsers','$(CompassReportUserName)','$(CompassReportUserPassword)')
+('dbo','CompassReportEtl','$(CompassReportEtlUserName)','$(CompassReportEtlUserPassword)')
 ) [Users]([defaultSchema],[role],[userName],[userPassword])
 
 DECLARE @testType nvarchar(1)

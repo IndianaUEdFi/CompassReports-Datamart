@@ -2,17 +2,17 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>False</IncludeCompositeObjects>
-    <TargetDatabaseName>#{Database.Name}</TargetDatabaseName>
+    <TargetDatabaseName>#{CompassReports.Database.Name}</TargetDatabaseName>
     <DeployScriptFileName>CompassReports.Db.CompassDataMart.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=#{DatabaseServer.Name};#{unless DatabaseServer.User.Name}Integrated Security=True#{/unless} #{if DatabaseServer.User.Name}User ID=#{DatabaseServer.User.Name}; Password=#{DatabaseServer.User.Password}#{/if};Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="ApplicationUserName">
-      <Value>#{Application.User.Name}</Value>
+      <Value>#{CompassReports.ApplicationUser.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ApplicationUserPassword">
-      <Value>#{Application.User.Password | XmlEscape}</Value>
+      <Value>#{CompassReports.ApplicationUser.Password | XmlEscape}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ETL">
       <Value>#{Execute.ETL}</Value>
@@ -21,10 +21,10 @@
       <Value>#{Execute.InitialData}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="MigrationUserName">
-      <Value>#{Migration.User.Name}</Value>
+      <Value>#{CompassReports.MigrationUser.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="MigrationUserPassword">
-      <Value>#{Migration.User.Password | XmlEscape}</Value>
+      <Value>#{CompassReports.MigrationUser.Password | XmlEscape}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="OdsDatabaseName">
       <Value>#{Ods.Database.Name}</Value>
@@ -33,10 +33,10 @@
       <Value>#{Ods.DatabaseServer.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
-      <Value>#{ExpectedGraduationEndYear}</Value>
+      <Value>#{CompassReports.ExpectedGraduationEndYear}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationStartYear">
-      <Value>#{ExpectedGraduationStartYear}</Value>
+      <Value>#{CompassReports.ExpectedGraduationStartYear}</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

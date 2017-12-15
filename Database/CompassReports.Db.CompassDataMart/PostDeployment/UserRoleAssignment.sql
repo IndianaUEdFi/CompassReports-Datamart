@@ -16,8 +16,8 @@ DECLARE @DefaultSchema sysname,
 DECLARE userRoles CURSOR FOR
 SELECT * FROM (
 VALUES
-('dbo','MigrationUsers','$(MigrationUserName)','$(MigrationUserPassword)')
-,('dbo','ApplicationUsers','$(ApplicationUserName)','$(ApplicationUserPassword)')
+('dbo','MigrationRole','$(MigrationUserName)','$(MigrationUserPassword)')
+,('dbo','ApplicationRole','$(ApplicationUserName)','$(ApplicationUserPassword)')
 ) [Users]([defaultSchema],[role],[userName],[userPassword])
 
 DECLARE @testType nvarchar(1)

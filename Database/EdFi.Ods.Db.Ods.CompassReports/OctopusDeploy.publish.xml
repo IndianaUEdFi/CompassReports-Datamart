@@ -2,25 +2,25 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>False</IncludeCompositeObjects>
-    <TargetDatabaseName>#{Database.Name}</TargetDatabaseName>
-    <TargetDatabaseNameMatch>#{DatabaseNameRegEx | XmlEscape}</TargetDatabaseNameMatch>
+    <TargetDatabaseName>#{Ods.Database.Name}</TargetDatabaseName>
+    <TargetDatabaseNameMatch>#{Ods.DatabaseNameRegEx | XmlEscape}</TargetDatabaseNameMatch>
     <DeployScriptFileName>EdFi.Ods.Db.Ods.CompassReports.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=#{DatabaseServer.Name};#{unless DatabaseServer.User.Name}Integrated Security=True#{/unless} #{if DatabaseServer.User.Name}User ID=#{DatabaseServer.User.Name}; Password=#{DatabaseServer.User.Password}#{/if};Pooling=False</TargetConnectionString>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="CompassReportUserName">
-      <Value>#{CompassReport.User.Name}</Value>
+    <SqlCmdVariable Include="CompassReportEtlUserName">
+      <Value>#{CompassReport.EtlUser.Name}</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="CompassReportUserPassword">
-      <Value>#{CompassReport.User.Password}</Value>
+    <SqlCmdVariable Include="CompassReportEtlUserPassword">
+      <Value>#{CompassReport.EtlUser.Password}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
-      <Value>#{ExpectedGraduationEndYear}</Value>
+      <Value>#{CompassReport.ExpectedGraduationEndYear}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationStartYear">
-      <Value>#{ExpectedGraduationStartYear}</Value>
+      <Value>#{CompassReport.ExpectedGraduationStartYear}</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

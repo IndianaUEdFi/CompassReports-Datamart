@@ -8,10 +8,10 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="CompassReportUserName">
+    <SqlCmdVariable Include="CompassReportEtlUserName">
       <Value>false</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="CompassReportUserPassword">
+    <SqlCmdVariable Include="CompassReportEtlUserPassword">
       <Value>false</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
