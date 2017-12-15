@@ -1,0 +1,6 @@
+.vscode/
+*.user
+*.suo
+*.jfm
+bin/
+obj/

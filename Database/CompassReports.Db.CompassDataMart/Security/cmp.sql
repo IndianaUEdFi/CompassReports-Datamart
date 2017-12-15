@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [cmp]
+    AUTHORIZATION [dbo];
+
