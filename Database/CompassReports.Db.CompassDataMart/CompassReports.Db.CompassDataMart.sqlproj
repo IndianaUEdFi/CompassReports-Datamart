@@ -109,8 +109,12 @@
     <None Include="deploy.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DLP_Deploy_Dacpac_v2.psm1" />
-    <None Include="OctopusDeploy.publish.xml" />
+    <None Include="DLP_Deploy_Dacpac_v2.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OctopusDeploy.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="CompassReports.Db.CompassDataMart.nuspec" />
     <None Include="CompassDataMart.publish.xml" />
   </ItemGroup>
