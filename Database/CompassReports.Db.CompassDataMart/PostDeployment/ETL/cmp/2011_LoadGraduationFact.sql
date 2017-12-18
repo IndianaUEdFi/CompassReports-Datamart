@@ -1,4 +1,4 @@
-INSERT INTO [CompassDataMart].[cmp].[GraduationFact]
+INSERT INTO [cmp].[GraduationFact]
            ([DemographicKey]
            ,[GraduationStatusKey]
 		   ,[SchoolKey]

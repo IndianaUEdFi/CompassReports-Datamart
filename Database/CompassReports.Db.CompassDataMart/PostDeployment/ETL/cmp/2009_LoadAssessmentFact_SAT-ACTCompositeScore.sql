@@ -1,5 +1,5 @@
 /* STUDENT ASSESSMENT PERFORMANCE FOR SAT AND ACT TAKEN */
-INSERT INTO [CompassDataMart].[cmp].[AssessmentFact]
+INSERT INTO [cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
