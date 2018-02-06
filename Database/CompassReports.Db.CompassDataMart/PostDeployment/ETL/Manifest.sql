@@ -1,0 +1,11 @@
+﻿:r .\cmp\2001_LoadEnrollmentFact.sql
+:r .\cmp\2002_LoadAttendanceFact.sql
+:r .\cmp\2003_LoadAssessmentFact_IREAD-3.sql
+:r .\cmp\2004_LoadAssessmentFact_ISTEP+.sql
+:r .\cmp\2005_LoadAssessmentFact_ISTAR.sql
+:r .\cmp\2006_LoadAssessmentFact_ECA.sql
+:r .\cmp\2007_LoadAssessmentFact_CollegeCareerReadiness.sql
+:r .\cmp\2008_LoadAssessmentFact_SAT-ACT.sql
+:r .\cmp\2009_LoadAssessmentFact_SAT-ACTCompositeScore.sql
+:r .\cmp\2010_LoadAssessmentFact_WIDA.sql
+:r .\cmp\2011_LoadGraduationFact.sql

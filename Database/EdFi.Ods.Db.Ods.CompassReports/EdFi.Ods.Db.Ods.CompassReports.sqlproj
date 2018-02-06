@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>EdFi.Ods.Db.Ods.CompassReports</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{7c9300f7-4098-4a64-a92e-01cdfda2b793}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>EdFi.Ods.Db.Ods.CompassReports</RootNamespace>
+    <AssemblyName>EdFi.Ods.Db.Ods.CompassReports</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <IsEncryptionOn>True</IsEncryptionOn>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security" />
+    <Folder Include="cmp" />
+    <Folder Include="cmp\Views" />
+    <Folder Include="cmp\Functions" />
+    <Folder Include="PostDeployment" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="EdFi.Ods.dacpac">
+      <HintPath>EdFi.Ods.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\cmp.sql" />
+    <Build Include="cmp\Views\SchoolYearDimension.sql" />
+    <Build Include="cmp\Views\SchoolDimension.sql" />
+    <Build Include="cmp\Functions\AssessmentDim.sql" />
+    <Build Include="cmp\Functions\DemographicDim.sql" />
+    <Build Include="cmp\Functions\GoodCauseExemptionDim.sql" />
+    <Build Include="cmp\Functions\GraduationStatusDim.sql" />
+    <Build Include="cmp\Functions\PerformanceDim.sql" />
+    <Build Include="cmp\Functions\PriorStudentEnrollment.sql" />
+    <Build Include="cmp\Functions\StudentEnrollment.sql" />
+    <Build Include="cmp\Views\EnrollmentFact.sql" />
+    <Build Include="cmp\Views\AttendanceFact.sql" />
+    <Build Include="cmp\Views\AssessmentFact_IREAD-3.sql" />
+    <Build Include="cmp\Views\AssessmentFact_ISTEP+.sql" />
+    <Build Include="cmp\Views\AssessmentFact_ISTAR.sql" />
+    <Build Include="cmp\Views\AssessmentFact_ECA.sql" />
+    <Build Include="cmp\Views\AssessmentFact_CollegeCareerReadiness.sql" />
+    <Build Include="cmp\Views\AssessmentFact_SAT-ACT.sql" />
+    <Build Include="cmp\Views\AssessmentFact_SAT-ACTCompositeScore.sql" />
+    <Build Include="cmp\Views\AssessmentFact_WIDA.sql" />
+    <Build Include="cmp\Views\GraduationFact.sql" />
+    <PostDeploy Include="PostDeployment\PostDeployment.sql" />
+    <None Include="PostDeployment\UserRoleAssignment.sql" />
+    <Build Include="Security\CompassReportUsers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="CompassReportEtlUserName">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="CompassReportEtlUserPassword">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ExpectedGraduationEndYear">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ExpectedGraduationStartYear">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OctopusDeploy.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="EdFi_Ods_Populated_Template.publish.xml" />
+    <None Include="deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DLP_Deploy_Dacpac_v2.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="EdFi.Ods.Db.Ods.CompassReports.nuspec" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets" Condition="Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets'))" />
+  </Target>
+</Project>

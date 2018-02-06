@@ -1,0 +1,8 @@
+.vscode/
+*.user
+*.suo
+*.jfm
+bin/
+obj/
+*.dbmdl
+Database/packages/

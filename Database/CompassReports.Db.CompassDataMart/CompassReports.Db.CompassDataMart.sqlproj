@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>CompassReporting.Db.Datamart</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{9a2fbfd1-8e9f-40cc-943e-16ff7cfc1ed2}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>CompassDataMart</RootNamespace>
+    <AssemblyName>CompassDataMart</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetFrameworkProfile />
+    <Containment>Partial</Containment>
+    <Recovery>SIMPLE</Recovery>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="cmp\" />
+    <Folder Include="cmp\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="PostDeployment" />
+    <Folder Include="PostDeployment\InitialData" />
+    <Folder Include="PostDeployment\ETL" />
+    <Folder Include="PostDeployment\InitialData\cmp" />
+    <Folder Include="PostDeployment\ETL\cmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="cmp\Tables\GraduationFact.sql" />
+    <Build Include="cmp\Tables\AttendanceFact.sql" />
+    <Build Include="cmp\Tables\EnrollmentFact.sql" />
+    <Build Include="cmp\Tables\AssessmentFact.sql" />
+    <Build Include="cmp\Tables\GraduationStatusJunkDimension.sql" />
+    <Build Include="cmp\Tables\SchoolYearDimension.sql" />
+    <Build Include="cmp\Tables\PerformanceDimension.sql" />
+    <Build Include="cmp\Tables\AssessmentDimension.sql" />
+    <Build Include="cmp\Tables\GoodCauseExemptionJunkDimension.sql" />
+    <Build Include="cmp\Tables\SchoolDimension.sql" />
+    <Build Include="cmp\Tables\DemographicJunkDimension.sql" />
+    <Build Include="Security\cmp.sql" />
+    <Build Include="Security\MigrationRole.sql" />
+    <Build Include="Security\ApplicationRole.sql" />
+    <PostDeploy Include="PostDeployment\PostDeployment.sql" />
+    <None Include="PostDeployment\UserRoleAssignment.sql" />
+    <None Include="PostDeployment\ETL\Manifest.sql" />
+    <None Include="PostDeployment\InitialData\Manifest.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1007_LoadSchoolDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1002_LoadAssessmentDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1003_LoadDemographicJunkDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1004_LoadGoodCauseExemptionJunkDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1005_LoadGraduationStatusJunkDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1006_LoadPerformanceDimension.sql" />
+    <None Include="PostDeployment\InitialData\cmp\1001_LoadSchoolYearDimension.sql" />
+    <None Include="PostDeployment\ETL\cmp\2001_LoadEnrollmentFact.sql" />
+    <None Include="PostDeployment\ETL\cmp\2002_LoadAttendanceFact.sql" />
+    <None Include="PostDeployment\ETL\cmp\2003_LoadAssessmentFact_IREAD-3.sql" />
+    <None Include="PostDeployment\ETL\cmp\2004_LoadAssessmentFact_ISTEP+.sql" />
+    <None Include="PostDeployment\ETL\cmp\2005_LoadAssessmentFact_ISTAR.sql" />
+    <None Include="PostDeployment\ETL\cmp\2006_LoadAssessmentFact_ECA.sql" />
+    <None Include="PostDeployment\ETL\cmp\2007_LoadAssessmentFact_CollegeCareerReadiness.sql" />
+    <None Include="PostDeployment\ETL\cmp\2008_LoadAssessmentFact_SAT-ACT.sql" />
+    <None Include="PostDeployment\ETL\cmp\2009_LoadAssessmentFact_SAT-ACTCompositeScore.sql" />
+    <None Include="PostDeployment\ETL\cmp\2010_LoadAssessmentFact_WIDA.sql" />
+    <None Include="PostDeployment\ETL\cmp\2011_LoadGraduationFact.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DLP_Deploy_Dacpac_v2.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OctopusDeploy.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CompassReports.Db.CompassDataMart.nuspec" />
+    <None Include="CompassDataMart.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="ApplicationUserName">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ApplicationUserPassword">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ETL">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__7)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ExpectedGraduationEndYear">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__10)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ExpectedGraduationStartYear">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__9)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="InitialData">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__8)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MigrationUserName">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__5)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MigrationUserPassword">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__6)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OdsDatabaseName">
+      <DefaultValue>OdsDatabseName</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OdsDatabaseServer">
+      <DefaultValue>OdsDatabseServer</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets" Condition="Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets'))" />
+  </Target>
+</Project>

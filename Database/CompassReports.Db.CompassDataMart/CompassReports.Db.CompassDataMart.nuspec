@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>CompassReports.Db.CompassDataMart</id>
+    <version>0.0.0</version>
+    <authors>$octoAuthor$</authors>
+    <owners>$octoOwner$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CompassReports.Db.CompassDataMart</description>
+    <releaseNotes />
+  </metadata>
+  <files>
+    <file src="$outputDir$DLP_Deploy_Dacpac_v2.psm1" target="." />
+  </files>
+</package>
