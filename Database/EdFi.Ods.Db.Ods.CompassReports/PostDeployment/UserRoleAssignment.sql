@@ -116,7 +116,7 @@ BEGIN
 		IF (@userAction IS NOT NULL)
 		BEGIN
 			SET @userCmd = @userAction + ' USER [' + @UserName + '] WITH DEFAULT_SCHEMA=[' + @DefaultSchema + ']'
-			IF(@UserPassword <> '' AND ((@testType = 'S' AND @testAuthenticationType = 2) OR @testType IS NULL))
+			IF(@UserPassword NOT IN ('','false') AND ((@testType = 'S' AND @testAuthenticationType = 2) OR @testType IS NULL))
 			BEGIN
 				SET @userCmd = @userCmd + ', PASSWORD=''' + @UserPassword + ''''
 			END
