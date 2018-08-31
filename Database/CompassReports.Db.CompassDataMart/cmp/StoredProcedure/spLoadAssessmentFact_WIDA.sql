@@ -1,6 +1,8 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR ECA */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_WIDA] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = 'INSERT INTO [cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -17,8 +19,9 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_ECA]
-OPTION (maxrecursion 0)
+FROM [' + @OdsDatabaseReference + '].[cmp].[AssessmentFact_WIDA]
+OPTION (maxrecursion 0)'
 
+EXEC(@sqlCmd)
       
  

@@ -1,6 +1,8 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR SAT AND ACT TAKEN */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_SAT-ACTCompositeScore] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = 'INSERT INTO [cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -17,7 +19,9 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_SAT-ACT]
-OPTION (maxrecursion 0)
+FROM [' + @OdsDatabaseReference + '].[cmp].[AssessmentFact_SAT-ACTCompositeScore]
+OPTION (maxrecursion 0)'
+
+EXEC(@sqlCmd)
       
  

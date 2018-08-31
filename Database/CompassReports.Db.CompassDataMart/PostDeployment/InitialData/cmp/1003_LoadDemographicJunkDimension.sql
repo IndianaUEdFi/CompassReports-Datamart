@@ -1,7 +1,4 @@
 /* Load Demographic Junk Dimension */
-DECLARE @StartYear smallint = CAST('$(ExpectedGraduationStartYear)' AS smallint)
-DECLARE @EndYear smallint = CAST('$(ExpectedGraduationEndYear)' AS SMALLINT);
-
 
 ;WITH GradeLevel (GradeLevel, GradeLevelSort ) AS
 (
@@ -98,34 +95,31 @@ WHERE GL.GradeLevel NOT IN ('Grade 9','Grade 10','Grade 11','Grade 12')
 )
 
 
-INSERT INTO cmp.DemographicJunkDimension
-(	GradeLevel, 
-	GradeLevelSort, 
-	Ethnicity,
-	FreeReducedLunchStatus,
-	SpecialEducationStatus,
-	EnglishLanguageLearnerStatus,
-	ExpectedGraduationYear
-)
-
-SELECT	GradeLevel,
-		GradeLevelSort,
-		Ethnicity,
-		FreeReducedLunchStatus,
-		SpecialEducationStatus,
-		EnglishLanguageLearnerStatus,
-		ExpectedGraduationYear
-FROM GradeLevelExpectedGraduationYear
-CROSS JOIN Ethnicity
-CROSS JOIN FreeReducedLunchStatus
-CROSS JOIN SpecialEducationStatus
-CROSS JOIN EnglishLanguageLearnerStatus
-ORDER BY GradeLevel, 
-		 GradeLevelSort, 
-		 Ethnicity, 
-		 FreeReducedLunchStatus, 
-		 SpecialEducationStatus, 
-		 EnglishLanguageLearnerStatus, 
-		 ExpectedGraduationYear
-
-OPTION (maxrecursion 0)
+MERGE INTO cmp.DemographicJunkDimension AS Target
+USING  (
+	SELECT	GradeLevel,
+			GradeLevelSort,
+			Ethnicity,
+			FreeReducedLunchStatus,
+			SpecialEducationStatus,
+			EnglishLanguageLearnerStatus,
+			ExpectedGraduationYear
+	FROM GradeLevelExpectedGraduationYear
+	CROSS JOIN Ethnicity
+	CROSS JOIN FreeReducedLunchStatus
+	CROSS JOIN SpecialEducationStatus
+	CROSS JOIN EnglishLanguageLearnerStatus
+	GROUP BY [GradeLevel], [GradeLevelSort], [Ethnicity], [FreeReducedLunchStatus], [SpecialEducationStatus], [EnglishLanguageLearnerStatus], [ExpectedGraduationYear]
+) AS Source ON Target.[GradeLevel]=Source.[GradeLevel] AND
+	Target.[GradeLevelSort]=Source.[GradeLevelSort] AND 
+	Target.[Ethnicity]=Source.[Ethnicity] AND
+	Target.[FreeReducedLunchStatus]=Source.[FreeReducedLunchStatus] AND
+	Target.[SpecialEducationStatus]=Source.[SpecialEducationStatus] AND
+	Target.[EnglishLanguageLearnerStatus]=Source.[EnglishLanguageLearnerStatus] AND
+	ISNULL(Target.[ExpectedGraduationYear],0)=ISNULL(Source.[ExpectedGraduationYear],0)
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT 	([GradeLevel], [GradeLevelSort], [Ethnicity], [FreeReducedLunchStatus], [SpecialEducationStatus], [EnglishLanguageLearnerStatus], [ExpectedGraduationYear])
+	VALUES 	(Source.[GradeLevel], Source.[GradeLevelSort], Source.[Ethnicity], Source.[FreeReducedLunchStatus], Source.[SpecialEducationStatus], Source.[EnglishLanguageLearnerStatus], Source.[ExpectedGraduationYear]) 
+WHEN NOT MATCHED BY SOURCE THEN
+	DELETE
+OPTION (maxrecursion 0);

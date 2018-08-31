@@ -1,4 +1,8 @@
-/* STUDENT ENROLLMENT COUNT */
+CREATE PROCEDURE [cmp].[spLoadEnrollmentFact] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = '
 INSERT INTO [cmp].[EnrollmentFact]
            ([DemographicKey]
            ,[SchoolKey]
@@ -10,5 +14,7 @@ SELECT  [DemographicId]
 	,[SchoolId]
 	,[SchoolYear]
 	,[EnrollmentCount]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[EnrollmentFact]	
+FROM [' + @OdsDatabaseReference + '].[cmp].[EnrollmentFact]	'
+
+EXEC(@sqlCmd)
 

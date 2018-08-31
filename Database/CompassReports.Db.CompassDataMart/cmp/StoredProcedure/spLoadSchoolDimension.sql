@@ -1,3 +1,8 @@
+CREATE PROCEDURE [cmp].[spLoadSchoolDimension] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = '
 INSERT INTO [cmp].[SchoolDimension]
            ([SchoolKey]
            ,[NameOfInstitution]
@@ -56,4 +61,7 @@ SELECT [SchoolId]
            ,[LEAWebSite]
            ,[LEASuperintendentName]
            ,[LEASuperintendentElectronicMailAddress]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[SchoolDimension]	
+FROM [' + @OdsDatabaseReference + '].[cmp].[SchoolDimension]'
+
+EXEC(@sqlCmd)
+

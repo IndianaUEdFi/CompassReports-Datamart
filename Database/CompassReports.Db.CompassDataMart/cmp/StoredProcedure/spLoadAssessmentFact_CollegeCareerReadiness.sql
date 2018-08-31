@@ -1,6 +1,8 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR AP EXAMS */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_CollegeCareerReadiness] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = 'INSERT INTO [cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -16,5 +18,7 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_CollegeCareerReadiness]
-OPTION (maxrecursion 0)
+FROM [' + @OdsDatabaseReference + '].[cmp].[AssessmentFact_CollegeCareerReadiness]
+OPTION (maxrecursion 0)'
+
+EXEC(@sqlCmd)

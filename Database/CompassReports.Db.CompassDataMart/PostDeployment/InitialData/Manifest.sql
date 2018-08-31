@@ -4,4 +4,3 @@
 :r .\cmp\1004_LoadGoodCauseExemptionJunkDimension.sql
 :r .\cmp\1005_LoadGraduationStatusJunkDimension.sql
 :r .\cmp\1006_LoadPerformanceDimension.sql
-:r .\cmp\1007_LoadSchoolDimension.sql

@@ -27,17 +27,14 @@
     <SqlCmdVariable Include="MigrationUserPassword">
       <Value>#{CompassReports.MigrationUser.Password | XmlEscape}</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseName">
-      <Value>#{Ods.Database.Name}</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseServer">
-      <Value>#{Ods.DatabaseServer.Name}</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>#{CompassReports.ExpectedGraduationEndYear}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationStartYear">
       <Value>#{CompassReports.ExpectedGraduationStartYear}</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OdsDatabaseReference">
+      <Value>#{if Ods.DatabaseServer.Name !=  DatabaseServer.Name}#{Ods.DatabaseServer.Name}].[{/if}#{Ods.Database.Name}</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

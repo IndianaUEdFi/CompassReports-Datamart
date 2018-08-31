@@ -1,4 +1,7 @@
-﻿:r .\cmp\2001_LoadEnrollmentFact.sql
+﻿:r .\cmp\1000_ClearSchoolDataForOds.sql
+:r .\cmp\1001_LoadSchoolYearDimension.sql
+:r .\cmp\1007_LoadSchoolDimension.sql
+:r .\cmp\2001_LoadEnrollmentFact.sql
 :r .\cmp\2002_LoadAttendanceFact.sql
 :r .\cmp\2003_LoadAssessmentFact_IREAD-3.sql
 :r .\cmp\2004_LoadAssessmentFact_ISTEP+.sql

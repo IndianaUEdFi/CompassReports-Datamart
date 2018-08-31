@@ -1,4 +1,8 @@
-INSERT INTO [cmp].[GraduationFact]
+CREATE PROCEDURE [cmp].[spLoadGraduationFact] (
+	@OdsDatabaseReference nvarchar(512)
+	) AS
+DECLARE @sqlCmd nvarchar(max)
+SET @sqlCmd = 'INSERT INTO [cmp].[GraduationFact]
            ([DemographicKey]
            ,[GraduationStatusKey]
 		   ,[SchoolKey]
@@ -10,4 +14,6 @@ SELECT DemographicId,
 	  SchoolId,
 	  SchoolYear,
 	  GraduationStudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[GraduationFact]
+FROM [' + @OdsDatabaseReference + '].[cmp].[GraduationFact]'
+
+EXEC(@sqlCmd)
