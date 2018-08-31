@@ -15,9 +15,6 @@
     <SqlCmdVariable Include="ApplicationUserPassword">
       <Value>#{CompassReports.ApplicationUser.Password | XmlEscape}</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ETL">
-      <Value>#{Execute.ETL}</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="InitialData">
       <Value>#{Execute.InitialData}</Value>
     </SqlCmdVariable>
@@ -32,9 +29,6 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationStartYear">
       <Value>#{CompassReports.ExpectedGraduationStartYear}</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseReference">
-      <Value>#{if Ods.DatabaseServer.Name !=  DatabaseServer.Name}#{Ods.DatabaseServer.Name}].[{/if}#{Ods.Database.Name}</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

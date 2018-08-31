@@ -1,8 +1,5 @@
-CREATE PROCEDURE [cmp].[spLoadAssessmentFact_ISTAR] (
-	@OdsDatabaseReference nvarchar(512)
-	) AS
-DECLARE @sqlCmd nvarchar(max)
-SET @sqlCmd = 'INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_ISTEP+] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -18,9 +15,8 @@ SELECT [DemographicId]
     ,[PerformanceKey]
     ,[GoodCauseExemptionKey]
     ,[StudentCount]
-FROM [' + @OdsDatabaseReference + '].[cmp].[AssessmentFact_ISTAR]
-OPTION (maxrecursion 0)'
+FROM [cmp].[AssessmentFact_ISTEP+]
+OPTION (maxrecursion 0)
 
-EXEC(@sqlCmd)
       
  

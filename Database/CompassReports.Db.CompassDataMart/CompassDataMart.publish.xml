@@ -16,9 +16,6 @@
     <SqlCmdVariable Include="ApplicationUserPassword">
       <Value>false</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ETL">
-      <Value>true</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>2030</Value>
     </SqlCmdVariable>
@@ -33,9 +30,6 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="MigrationUserPassword">
       <Value>false</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseReference">
-      <Value>EdFi_Ods_Populated_Template</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

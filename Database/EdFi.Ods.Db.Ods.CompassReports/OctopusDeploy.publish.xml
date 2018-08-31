@@ -10,11 +10,17 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
+    <SqlCmdVariable Include="CompassDataMart">
+      <Value>#{CompassReports.Database.Name}</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserName">
       <Value>#{CompassReports.EtlUser.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserPassword">
       <Value>#{CompassReports.EtlUser.Password}</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ETL">
+      <Value>#{Execute.ETL}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>#{CompassReports.ExpectedGraduationEndYear}</Value>

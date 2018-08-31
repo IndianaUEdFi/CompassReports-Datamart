@@ -1,9 +1,6 @@
-CREATE PROCEDURE [cmp].[spLoadSchoolDimension] (
-	@OdsDatabaseReference nvarchar(512)
-	) AS
-DECLARE @sqlCmd nvarchar(max)
-SET @sqlCmd = '
-INSERT INTO [cmp].[SchoolDimension]
+CREATE PROCEDURE [cmp].[spLoadSchoolDimension] AS
+
+INSERT INTO [$(CompassDataMart)].[cmp].[SchoolDimension]
            ([SchoolKey]
            ,[NameOfInstitution]
            ,[StreetNumberName]
@@ -61,7 +58,4 @@ SELECT [SchoolId]
            ,[LEAWebSite]
            ,[LEASuperintendentName]
            ,[LEASuperintendentElectronicMailAddress]
-FROM [' + @OdsDatabaseReference + '].[cmp].[SchoolDimension]'
-
-EXEC(@sqlCmd)
-
+FROM [cmp].[SchoolDimension]

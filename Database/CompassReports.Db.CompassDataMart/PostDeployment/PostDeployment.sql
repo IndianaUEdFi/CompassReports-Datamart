@@ -7,13 +7,6 @@ PRINT 'Executing Initial Data Scripts:'
 	DECLARE @EndYear smallint = CAST('$(ExpectedGraduationEndYear)' AS SMALLINT);
 	:r .\InitialData\Manifest.sql
 End
-
-GO
-if ('$(ETL)' = 'true')
-Begin
-PRINT 'Executing ETL:'
-	EXEC [cmp].[spProcessEtl] N'$(OdsDatabaseReference)'
-End
 GO
 
 PRINT 'Applying User Roles'

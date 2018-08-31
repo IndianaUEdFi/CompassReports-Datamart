@@ -65,10 +65,7 @@
     <Folder Include="Security\" />
     <Folder Include="PostDeployment" />
     <Folder Include="PostDeployment\InitialData" />
-    <Folder Include="PostDeployment\ETL" />
     <Folder Include="PostDeployment\InitialData\cmp" />
-    <Folder Include="PostDeployment\ETL\cmp" />
-    <Folder Include="cmp\StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="cmp\Tables\GraduationFact.sql" />
@@ -87,29 +84,13 @@
     <Build Include="Security\ApplicationRole.sql" />
     <PostDeploy Include="PostDeployment\PostDeployment.sql" />
     <None Include="PostDeployment\UserRoleAssignment.sql" />
-    <None Include="PostDeployment\ETL\Manifest.sql" />
     <None Include="PostDeployment\InitialData\Manifest.sql" />
     <None Include="PostDeployment\InitialData\cmp\1002_LoadAssessmentDimension.sql" />
     <None Include="PostDeployment\InitialData\cmp\1003_LoadDemographicJunkDimension.sql" />
     <None Include="PostDeployment\InitialData\cmp\1004_LoadGoodCauseExemptionJunkDimension.sql" />
     <None Include="PostDeployment\InitialData\cmp\1005_LoadGraduationStatusJunkDimension.sql" />
     <None Include="PostDeployment\InitialData\cmp\1006_LoadPerformanceDimension.sql" />
-    <Build Include="cmp\StoredProcedure\spClearSchoolDataForOds.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadSchoolDimension.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadEnrollmentFact.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAttendanceFact.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_IREAD-3.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ISTEP+.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ISTAR.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ECA.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_CollegeCareerReadiness.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_SAT-ACT.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_SAT-ACTCompositeScore.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_WIDA.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadGraduationFact.sql" />
     <None Include="PostDeployment\InitialData\cmp\1001_LoadSchoolYearDimension.sql" />
-    <Build Include="cmp\StoredProcedure\spLoadSchoolYearDimension.sql" />
-    <Build Include="cmp\StoredProcedure\spProcessEtl.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deploy.ps1">
@@ -135,11 +116,6 @@
       </DefaultValue>
       <Value>$(SqlCmdVar__4)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ETL">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__7)</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <DefaultValue>
       </DefaultValue>
@@ -164,10 +140,6 @@
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__6)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseReference">
-      <DefaultValue>OdsDatabseName</DefaultValue>
-      <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
   </ItemGroup>
   <Import Project="$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets" Condition="Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" />

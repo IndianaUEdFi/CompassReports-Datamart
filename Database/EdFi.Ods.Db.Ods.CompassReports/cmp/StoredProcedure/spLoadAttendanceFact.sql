@@ -1,8 +1,5 @@
-CREATE PROCEDURE [cmp].[spLoadAttendanceFact] (
-	@OdsDatabaseReference nvarchar(512)
-	) AS
-DECLARE @sqlCmd nvarchar(max)
-SET @sqlCmd = 'INSERT INTO [cmp].[AttendanceFact]
+CREATE PROCEDURE [cmp].[spLoadAttendanceFact] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AttendanceFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -13,6 +10,4 @@ SELECT [DemographicId]
     ,[SchoolYear]
     ,[TotalAbsences]
     ,[TotalInstructionalDays]
-FROM [' + @OdsDatabaseReference + '].[cmp].[AttendanceFact]'
-
-EXEC(@sqlCmd)
+FROM [cmp].[AttendanceFact]

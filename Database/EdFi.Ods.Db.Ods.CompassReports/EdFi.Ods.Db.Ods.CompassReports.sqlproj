@@ -64,11 +64,17 @@
     <Folder Include="cmp\Views" />
     <Folder Include="cmp\Functions" />
     <Folder Include="PostDeployment" />
+    <Folder Include="cmp\StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="EdFi.Ods.dacpac">
       <HintPath>EdFi.Ods.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ArtifactReference>
+    <ArtifactReference Include="..\CompassReports.Db.CompassDataMart\bin\$(Configuration)\CompassReports.Db.CompassDataMart.dacpac">
+      <HintPath>..\CompassReports.Db.CompassDataMart\bin\$(Configuration)\CompassReports.Db.CompassDataMart.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>CompassDataMart</DatabaseSqlCmdVariable>
     </ArtifactReference>
   </ItemGroup>
   <ItemGroup>
@@ -96,8 +102,27 @@
     <PostDeploy Include="PostDeployment\PostDeployment.sql" />
     <None Include="PostDeployment\UserRoleAssignment.sql" />
     <Build Include="Security\CompassReportUsers.sql" />
+    <Build Include="cmp\StoredProcedure\spClearSchoolDataForOds.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_CollegeCareerReadiness.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ECA.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_IREAD-3.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ISTAR.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_ISTEP+.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_SAT-ACT.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_SAT-ACTCompositeScore.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAssessmentFact_WIDA.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadAttendanceFact.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadEnrollmentFact.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadGraduationFact.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadSchoolDimension.sql" />
+    <Build Include="cmp\StoredProcedure\spLoadSchoolYearDimension.sql" />
+    <Build Include="cmp\StoredProcedure\spProcessEtl.sql" />
   </ItemGroup>
   <ItemGroup>
+    <SqlCmdVariable Include="CompassDataMart">
+      <DefaultValue>CompassDataMart</DefaultValue>
+      <Value>$(SqlCmdVar__7)</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserName">
       <DefaultValue>
       </DefaultValue>
@@ -107,6 +132,10 @@
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ETL">
+      <DefaultValue>true</DefaultValue>
+      <Value>$(SqlCmdVar__6)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <DefaultValue>

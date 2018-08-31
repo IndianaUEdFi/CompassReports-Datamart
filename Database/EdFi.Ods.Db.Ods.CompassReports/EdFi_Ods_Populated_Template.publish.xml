@@ -8,11 +8,17 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
+    <SqlCmdVariable Include="CompassDataMart">
+      <Value>CompassDataMart</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserName">
       <Value>false</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="CompassReportEtlUserPassword">
       <Value>false</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ETL">
+      <Value>true</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>2030</Value>
