@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>OperationsCockpit.Db.OperationsCockpit.CompassReports</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{8cc0bc2b-ebeb-462e-8c6d-1de1b530c81b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>OperationsCockpit.Db.OperationsCockpit.CompassReports</RootNamespace>
+    <AssemblyName>OperationsCockpit.Db.OperationsCockpit.CompassReports</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <PageVerify>CHECKSUM</PageVerify>
+    <IsEncryptionOn>True</IsEncryptionOn>
+    <Containment>Partial</Containment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Scripts\Post-Deployment\Data" />
+    <Folder Include="Scripts\Post-Deployment\Data\domain" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Data\domain\Feature.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\FeatureOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\FeatureSystem.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\Output.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputComponent.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputDestinationOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputFormatOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\System.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemIntegrationConnection.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemIntegrationDefault.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\Manifest.sql" />
+    <None Include="Debug.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OctopusDeploy.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OperationsCockpit.Db.OperationsCockpit.CompassReports.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Post-Deployment\PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="Data">
+      <DefaultValue>true</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="DeployDB" AfterTargets="build" Condition="Exists('$(MSBuildProjectDirectory)\$(Configuration).publish.xml')">
+    <Message Importance="high" Text="************** Start Deploying DB **************" />
+    <Message Importance="high" Text="Deploying Project: $(MSBuildProjectDirectory)\$(MSBuildProjectName).sqlproj" />
+    <Message Importance="high" Text="Deployment Profile: $(MSBuildProjectDirectory)\$(Configuration).publish.xml" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)\$(MSBuildProjectName).sqlproj" Properties="SqlPublishProfilePath=$(MSBuildProjectDirectory)\$(Configuration).publish.xml" Targets="sqlPublish" />
+  </Target>
+  <Import Project="$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets" Condition="Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>copy ..\..\..\CompassReports.Db.CompassDataMart\DLP_Deploy_Dacpac_v2.psm1 /y</PreBuildEvent>
+  </PropertyGroup>
+</Project>

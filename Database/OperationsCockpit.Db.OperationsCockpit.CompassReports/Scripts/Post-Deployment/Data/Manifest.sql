@@ -1,0 +1,11 @@
+﻿:r .\domain\Feature.sql
+:r .\domain\Output.sql
+:r .\domain\FeatureOutput.sql
+:r .\domain\OutputComponent.sql
+:r .\domain\OutputDestinationOutput.sql
+:r .\domain\OutputFormatOutput.sql
+:r .\domain\System.sql
+:r .\domain\FeatureSystem.sql
+:r .\domain\SystemOutput.sql
+:r .\domain\SystemIntegrationDefault.sql
+:r .\domain\SystemIntegrationConnection.sql
