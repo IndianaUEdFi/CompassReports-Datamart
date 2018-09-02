@@ -6,7 +6,7 @@
 	INSERT INTO @Compass_OutputComponent 
 		([Output_Id], [Path], [OutputFileBaseName]) 
 	SELECT [Id], [Path], [OutputFileBaseName]
-	FROM (VALUES('Compass Extract', '[cmp].[spPublishEtl]', 'None')) X([OutputName], [Path], [OutputFileBaseName])
+	FROM (VALUES('Compass Extract', '[cmp].[spProcessEtl]', 'None')) X([OutputName], [Path], [OutputFileBaseName])
 	INNER JOIN @Compass_Output fo ON fo.[Name] = X.OutputName
 
 SELECT * INTO #Compass_OutputComponentDiff FROM (
