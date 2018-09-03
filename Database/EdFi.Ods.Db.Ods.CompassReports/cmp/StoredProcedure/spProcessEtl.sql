@@ -14,3 +14,7 @@ EXEC [cmp].[spLoadAssessmentFact_SAT-ACT]
 EXEC [cmp].[spLoadAssessmentFact_SAT-ACTCompositeScore] 
 EXEC [cmp].[spLoadAssessmentFact_WIDA] 
 EXEC [cmp].[spLoadGraduationFact] 
+
+select LocalEducationAgencyId
+FROM edfi.LocalEducationAgency
+FOR XML PATH
