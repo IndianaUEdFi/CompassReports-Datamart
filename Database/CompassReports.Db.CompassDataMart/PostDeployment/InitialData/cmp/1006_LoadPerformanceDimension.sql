@@ -7,9 +7,8 @@
 	WHERE Score < 1600
 	)
 
-INSERT INTO cmp.PerformanceDimension 
-(PerformanceLevel, ScoreResult)
-
+MERGE INTO cmp.PerformanceDimension AS Target
+USING (
 SELECT PerformanceLevel
 	 , ScoreResult
 FROM (
@@ -63,5 +62,10 @@ FROM (
 	UNION
 	SELECT 'Did Not Take an AP Exam' AS [PerformanceLevel]
 		 , NULL AS [ScoreResult]
-) PL
-OPTION (maxrecursion 0)
+) PL ) AS SOURCE ON Target.[PerformanceLevel]=Source.[PerformanceLevel] AND ISNULL(Target.[ScoreResult],0)=ISNULL(Source.[ScoreResult],0)
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT 	([PerformanceLevel], [ScoreResult])
+	VALUES 	(Source.[PerformanceLevel], Source.[ScoreResult]) 
+WHEN NOT MATCHED BY SOURCE THEN
+	DELETE
+OPTION (maxrecursion 0);

@@ -1,5 +1,5 @@
-/* STUDENT ENROLLMENT COUNT */
-INSERT INTO [cmp].[EnrollmentFact]
+CREATE PROCEDURE [cmp].[spLoadEnrollmentFact] AS 
+INSERT INTO [$(CompassDataMart)].[cmp].[EnrollmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -10,5 +10,5 @@ SELECT  [DemographicId]
 	,[SchoolId]
 	,[SchoolYear]
 	,[EnrollmentCount]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[EnrollmentFact]	
+FROM [cmp].[EnrollmentFact]	
 

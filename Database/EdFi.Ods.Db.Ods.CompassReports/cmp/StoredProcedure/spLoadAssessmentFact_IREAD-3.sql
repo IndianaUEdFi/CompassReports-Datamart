@@ -1,6 +1,5 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR ISTAR */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_IREAD-3] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -16,7 +15,5 @@ SELECT [DemographicId]
     ,[PerformanceKey]
     ,[GoodCauseExemptionKey]
     ,[StudentCount]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_ISTAR]
+FROM [cmp].[AssessmentFact_IREAD-3]
 OPTION (maxrecursion 0)
-      
- 

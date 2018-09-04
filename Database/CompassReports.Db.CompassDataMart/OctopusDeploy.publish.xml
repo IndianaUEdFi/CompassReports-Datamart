@@ -15,9 +15,6 @@
     <SqlCmdVariable Include="ApplicationUserPassword">
       <Value>#{CompassReports.ApplicationUser.Password | XmlEscape}</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ETL">
-      <Value>#{Execute.ETL}</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="InitialData">
       <Value>#{Execute.InitialData}</Value>
     </SqlCmdVariable>
@@ -26,12 +23,6 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="MigrationUserPassword">
       <Value>#{CompassReports.MigrationUser.Password | XmlEscape}</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseName">
-      <Value>#{Ods.Database.Name}</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseServer">
-      <Value>#{Ods.DatabaseServer.Name}</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>#{CompassReports.ExpectedGraduationEndYear}</Value>

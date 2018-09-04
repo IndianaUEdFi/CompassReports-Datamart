@@ -1,6 +1,5 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR ECA */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_SAT-ACT] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -17,8 +16,6 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_ECA]
+FROM [cmp].[AssessmentFact_SAT-ACT]
 OPTION (maxrecursion 0)
-
-      
  

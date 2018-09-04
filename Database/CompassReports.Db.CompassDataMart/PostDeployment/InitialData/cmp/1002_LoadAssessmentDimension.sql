@@ -98,112 +98,59 @@ CROSS JOIN GRADELEVELS
 CROSS JOIN SUBJECTAREA
 )
 
-INSERT INTO [cmp].[AssessmentDimension]
-           ([AssessmentTitle]
-           ,[AssessedGradeLevel]
-           ,[AcademicSubject]
-		   ,MaxScore
-		   )
+MERGE INTO [cmp].[AssessmentDimension] AS Target
+USING (
+	SELECT	AssessmentTitle, 
+			AssessedGradeLevel, 
+			AcademicSubject,
+			MaxScore
+	FROM
+	(
+	SELECT * 
+	FROM ALLASSESSMENTS
+	WHERE (AssessmentTitle = 'IREAD-3'
+		AND AcademicSubject = 'Reading'
+		AND AssessedGradeLevel = 'Grade 3')
+	OR (AssessmentTitle = 'AP'
+		AND AcademicSubject = 'Not Applicable'
+		AND AssessedGradeLevel IN ('Grade 10', 'Grade 11', 'Grade 12'))
+	OR (AssessmentTitle = 'ACT'
+		AND AcademicSubject IN ('Math', 'Reading', 'Writing', 'Composite Score', 'English (ACT Only)', 'Science (ACT Only)')
+		AND AssessedGradeLevel = 'Grade 12')
 
-SELECT	AssessmentTitle, 
-		AssessedGradeLevel, 
-		AcademicSubject,
-		MaxScore
-FROM
-(
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'IREAD-3'
-AND AcademicSubject = 'Reading'
-AND AssessedGradeLevel = 'Grade 3'
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'AP'
-AND AcademicSubject = 'Not Applicable'
-AND AssessedGradeLevel IN ('Grade 10', 'Grade 11', 'Grade 12')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ACT'
-AND AcademicSubject IN ('Math', 'Reading', 'Writing', 'Composite Score', 'English (ACT Only)', 'Science (ACT Only)')
-AND AssessedGradeLevel = 'Grade 12'
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'SAT'
-AND AcademicSubject IN ('Math', 'Reading', 'Writing', 'Composite Score')
-AND AssessedGradeLevel = 'Grade 12'
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ECA'
-AND AcademicSubject IN ('English 10 Only', 'Algebra I Only', 'Both English 10 and Algebra I')
-AND AssessedGradeLevel IN ('Grade 10', 'Grade 11', 'Grade 12')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTEP+'
-AND AcademicSubject IN ('English/Language Arts Only', 'Math Only', 'Both English/Language Arts and Math')
-AND AssessedGradeLevel IN ('Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 10')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTEP+'
-AND AcademicSubject IN ('Science Only')
-AND AssessedGradeLevel IN ('Grade 4', 'Grade 6', 'Grade 10')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTEP+'
-AND AcademicSubject IN ('Social Studies Only')
-AND AssessedGradeLevel IN ('Grade 5', 'Grade 7')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTAR'
-AND AcademicSubject IN ('English/Language Arts Only', 'Math Only')
-AND AssessedGradeLevel IN ('Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 10')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTAR'
-AND AcademicSubject IN ('Science Only')
-AND AssessedGradeLevel IN ('Grade 4', 'Grade 6', 'Grade 10')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'ISTAR'
-AND AcademicSubject IN ('Social Studies Only')
-AND AssessedGradeLevel IN ('Grade 5', 'Grade 7')
-
-UNION
-
-SELECT * 
-FROM ALLASSESSMENTS
-WHERE AssessmentTitle = 'WIDA'
-AND AcademicSubject = 'English'
-
-)A
-GROUP BY AssessmentTitle, AssessedGradeLevel, AcademicSubject, MaxScore
-ORDER BY AssessmentTitle, AcademicSubject, AssessedGradeLevel
+	OR (AssessmentTitle = 'SAT'
+		AND AcademicSubject IN ('Math', 'Reading', 'Writing', 'Composite Score')
+		AND AssessedGradeLevel = 'Grade 12')
+	OR (AssessmentTitle = 'ECA'
+		AND AcademicSubject IN ('English 10 Only', 'Algebra I Only', 'Both English 10 and Algebra I')
+		AND AssessedGradeLevel IN ('Grade 10', 'Grade 11', 'Grade 12'))
+	OR (AssessmentTitle = 'ISTEP+'
+		AND AcademicSubject IN ('English/Language Arts Only', 'Math Only', 'Both English/Language Arts and Math')
+		AND AssessedGradeLevel IN ('Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 10'))
+	OR (AssessmentTitle = 'ISTEP+'
+		AND AcademicSubject IN ('Science Only')
+		AND AssessedGradeLevel IN ('Grade 4', 'Grade 6', 'Grade 10'))
+	OR (AssessmentTitle = 'ISTEP+'
+		AND AcademicSubject IN ('Social Studies Only')
+		AND AssessedGradeLevel IN ('Grade 5', 'Grade 7'))
+	OR (AssessmentTitle = 'ISTAR'
+		AND AcademicSubject IN ('English/Language Arts Only', 'Math Only')
+		AND AssessedGradeLevel IN ('Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 10'))
+	OR (AssessmentTitle = 'ISTAR'
+		AND AcademicSubject IN ('Science Only')
+		AND AssessedGradeLevel IN ('Grade 4', 'Grade 6', 'Grade 10'))
+	OR (AssessmentTitle = 'ISTAR'
+		AND AcademicSubject IN ('Social Studies Only')
+		AND AssessedGradeLevel IN ('Grade 5', 'Grade 7'))
+	OR (AssessmentTitle = 'WIDA'
+		AND AcademicSubject = 'English')
+	)A
+	GROUP BY AssessmentTitle, AssessedGradeLevel, AcademicSubject, MaxScore
+	) AS Source ON Target.[AssessmentTitle]=Source.[AssessmentTitle] AND Target.[AssessedGradeLevel]=Source.[AssessedGradeLevel] AND Target.[AcademicSubject]=Source.[AcademicSubject]
+WHEN MATCHED AND (ISNULL(Target.[MaxScore],0) <> ISNULL(Source.[MaxScore],0)) THEN
+	UPDATE SET Target.[MaxScore]=Source.[MaxScore] 
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT 	([AssessmentTitle], [AssessedGradeLevel], [AcademicSubject], [MaxScore])
+	VALUES 	(Source.[AssessmentTitle], Source.[AssessedGradeLevel], Source.[AcademicSubject], Source.[MaxScore]) 
+WHEN NOT MATCHED BY SOURCE THEN
+	DELETE;

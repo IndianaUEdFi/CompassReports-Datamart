@@ -1,6 +1,5 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR AP EXAMS */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_ECA] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -9,6 +8,7 @@ INSERT INTO [cmp].[AssessmentFact]
            ,[GoodCauseExemptionKey]
            ,[AssessmentStudentCount]
 		   )
+
 SELECT  DemographicId,
 		SchoolId,
 		SchoolYear,
@@ -16,5 +16,7 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_CollegeCareerReadiness]
+FROM [cmp].[AssessmentFact_ECA]
 OPTION (maxrecursion 0)
+      
+ 

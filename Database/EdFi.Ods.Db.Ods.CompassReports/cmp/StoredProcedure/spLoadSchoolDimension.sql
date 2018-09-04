@@ -1,4 +1,6 @@
-INSERT INTO [cmp].[SchoolDimension]
+CREATE PROCEDURE [cmp].[spLoadSchoolDimension] AS
+
+INSERT INTO [$(CompassDataMart)].[cmp].[SchoolDimension]
            ([SchoolKey]
            ,[NameOfInstitution]
            ,[StreetNumberName]
@@ -56,4 +58,4 @@ SELECT [SchoolId]
            ,[LEAWebSite]
            ,[LEASuperintendentName]
            ,[LEASuperintendentElectronicMailAddress]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[SchoolDimension]	
+FROM [cmp].[SchoolDimension]

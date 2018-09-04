@@ -14,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{27D1EA
 	EndProjectSection
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EdFi.Ods.Db.Ods.CompassReports", "EdFi.Ods.Db.Ods.CompassReports\EdFi.Ods.Db.Ods.CompassReports.sqlproj", "{7C9300F7-4098-4A64-A92E-01CDFDA2B793}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A2FBFD1-8E9F-40CC-943E-16FF7CFC1ED2} = {9A2FBFD1-8E9F-40CC-943E-16FF7CFC1ED2}
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OperationsCockpit.Db.OperationsCockpit.CompassReports", "OperationsCockpit.Db.OperationsCockpit.CompassReports\OperationsCockpit.Db.OperationsCockpit.CompassReports.sqlproj", "{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,12 @@ Global
 		{7C9300F7-4098-4A64-A92E-01CDFDA2B793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C9300F7-4098-4A64-A92E-01CDFDA2B793}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C9300F7-4098-4A64-A92E-01CDFDA2B793}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC0BC2B-EBEB-462E-8C6D-1DE1B530C81B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

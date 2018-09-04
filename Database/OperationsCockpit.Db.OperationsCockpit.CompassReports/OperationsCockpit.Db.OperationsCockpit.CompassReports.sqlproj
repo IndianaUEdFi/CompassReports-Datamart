@@ -4,28 +4,33 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>CompassReporting.Db.Datamart</Name>
+    <Name>OperationsCockpit.Db.OperationsCockpit.CompassReports</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{9a2fbfd1-8e9f-40cc-943e-16ff7cfc1ed2}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{8cc0bc2b-ebeb-462e-8c6d-1de1b530c81b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>CompassDataMart</RootNamespace>
-    <AssemblyName>CompassDataMart</AssemblyName>
+    <RootNamespace>OperationsCockpit.Db.OperationsCockpit.CompassReports</RootNamespace>
+    <AssemblyName>OperationsCockpit.Db.OperationsCockpit.CompassReports</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <TargetFrameworkProfile />
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <PageVerify>CHECKSUM</PageVerify>
+    <IsEncryptionOn>True</IsEncryptionOn>
     <Containment>Partial</Containment>
-    <Recovery>SIMPLE</Recovery>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -60,88 +65,52 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="cmp\" />
-    <Folder Include="cmp\Tables\" />
-    <Folder Include="Security\" />
-    <Folder Include="PostDeployment" />
-    <Folder Include="PostDeployment\InitialData" />
-    <Folder Include="PostDeployment\InitialData\cmp" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Scripts\Post-Deployment\Data" />
+    <Folder Include="Scripts\Post-Deployment\Data\domain" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="cmp\Tables\GraduationFact.sql" />
-    <Build Include="cmp\Tables\AttendanceFact.sql" />
-    <Build Include="cmp\Tables\EnrollmentFact.sql" />
-    <Build Include="cmp\Tables\AssessmentFact.sql" />
-    <Build Include="cmp\Tables\GraduationStatusJunkDimension.sql" />
-    <Build Include="cmp\Tables\SchoolYearDimension.sql" />
-    <Build Include="cmp\Tables\PerformanceDimension.sql" />
-    <Build Include="cmp\Tables\AssessmentDimension.sql" />
-    <Build Include="cmp\Tables\GoodCauseExemptionJunkDimension.sql" />
-    <Build Include="cmp\Tables\SchoolDimension.sql" />
-    <Build Include="cmp\Tables\DemographicJunkDimension.sql" />
-    <Build Include="Security\cmp.sql" />
-    <Build Include="Security\MigrationRole.sql" />
-    <Build Include="Security\ApplicationRole.sql" />
-    <PostDeploy Include="PostDeployment\PostDeployment.sql" />
-    <None Include="PostDeployment\UserRoleAssignment.sql" />
-    <None Include="PostDeployment\InitialData\Manifest.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1002_LoadAssessmentDimension.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1003_LoadDemographicJunkDimension.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1004_LoadGoodCauseExemptionJunkDimension.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1005_LoadGraduationStatusJunkDimension.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1006_LoadPerformanceDimension.sql" />
-    <None Include="PostDeployment\InitialData\cmp\1001_LoadSchoolYearDimension.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="deploy.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="DLP_Deploy_Dacpac_v2.psm1">
+    <None Include="Scripts\Post-Deployment\Data\domain\Feature.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\FeatureOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\FeatureSystem.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\Output.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputComponent.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputDestinationOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\OutputFormatOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\System.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemIntegrationConnection.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemIntegrationDefault.sql" />
+    <None Include="Scripts\Post-Deployment\Data\domain\SystemOutput.sql" />
+    <None Include="Scripts\Post-Deployment\Data\Manifest.sql" />
+    <None Include="Debug.publish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="OctopusDeploy.publish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CompassReports.Db.CompassDataMart.nuspec" />
-    <None Include="CompassDataMart.publish.xml" />
+    <None Include="OperationsCockpit.Db.OperationsCockpit.CompassReports.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="ApplicationUserName">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__3)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="ApplicationUserPassword">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__4)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="ExpectedGraduationEndYear">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__10)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="ExpectedGraduationStartYear">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__9)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="InitialData">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__8)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="MigrationUserName">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__5)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="MigrationUserPassword">
-      <DefaultValue>
-      </DefaultValue>
-      <Value>$(SqlCmdVar__6)</Value>
+    <PostDeploy Include="Scripts\Post-Deployment\PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="Data">
+      <DefaultValue>true</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="DeployDB" AfterTargets="build" Condition="Exists('$(MSBuildProjectDirectory)\$(Configuration).publish.xml')">
+    <Message Importance="high" Text="************** Start Deploying DB **************" />
+    <Message Importance="high" Text="Deploying Project: $(MSBuildProjectDirectory)\$(MSBuildProjectName).sqlproj" />
+    <Message Importance="high" Text="Deployment Profile: $(MSBuildProjectDirectory)\$(Configuration).publish.xml" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)\$(MSBuildProjectName).sqlproj" Properties="SqlPublishProfilePath=$(MSBuildProjectDirectory)\$(Configuration).publish.xml" Targets="sqlPublish" />
+  </Target>
   <Import Project="$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets" Condition="Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -149,4 +118,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\OctoPack.3.5.2\build\OctoPack.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>copy ..\..\..\CompassReports.Db.CompassDataMart\DLP_Deploy_Dacpac_v2.psm1 /y</PreBuildEvent>
+  </PropertyGroup>
 </Project>

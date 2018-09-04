@@ -1,5 +1,5 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR ISTEP+ */
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_ISTEP+] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -15,7 +15,7 @@ SELECT [DemographicId]
     ,[PerformanceKey]
     ,[GoodCauseExemptionKey]
     ,[StudentCount]
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_ISTEP+]
+FROM [cmp].[AssessmentFact_ISTEP+]
 OPTION (maxrecursion 0)
 
       

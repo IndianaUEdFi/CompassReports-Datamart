@@ -34,19 +34,23 @@ SELECT 'Non-Waiver'
 )
 
 /* INSERT INTO GraduationStatusJunkDimension */
-INSERT INTO [cmp].[GraduationStatusJunkDimension]
-           ([GraduationStatus]
-           ,[DiplomaType]
-           ,[GraduationWaiver])
-
+MERGE INTO [cmp].[GraduationStatusJunkDimension] AS Target
+USING (
 SELECT *
 FROM GraduationStatus
 CROSS JOIN DiplomaType
 CROSS JOIN GraduationWaiver
 WHERE GraduationStatus = 'Graduates'
-
 UNION
-
 SELECT GraduationStatus, 'Not Applicable','Not Applicable'
 FROM GraduationStatus
-WHERE GraduationStatus <> 'Graduates'
+WHERE GraduationStatus <> 'Graduates') As Source ON Target.[GraduationStatus]=Source.[GraduationStatus] AND
+           Target.[DiplomaType]=Source.[DiplomaType] AND
+           Target.[GraduationWaiver]=Source.[GraduationWaiver]
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT 	([GraduationStatus], [DiplomaType], [GraduationWaiver])
+	VALUES 	(Source.[GraduationStatus], Source.[DiplomaType], Source.[GraduationWaiver]) 
+WHEN NOT MATCHED BY SOURCE THEN
+	DELETE;
+
+

@@ -7,7 +7,7 @@
     <TargetConnectionString>Data Source=.;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
-    <CreateNewDatabase>True</CreateNewDatabase>
+    <CreateNewDatabase>False</CreateNewDatabase>
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="ApplicationUserName">
@@ -15,9 +15,6 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="ApplicationUserPassword">
       <Value>false</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="ETL">
-      <Value>true</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExpectedGraduationEndYear">
       <Value>2030</Value>
@@ -33,12 +30,6 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="MigrationUserPassword">
       <Value>false</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseName">
-      <Value>EdFi_Ods_Populated_Template</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="OdsDatabaseServer">
-      <Value>DS-BW6MVY1</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

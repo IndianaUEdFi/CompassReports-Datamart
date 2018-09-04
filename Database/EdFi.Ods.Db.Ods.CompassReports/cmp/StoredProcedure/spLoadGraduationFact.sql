@@ -1,4 +1,5 @@
-INSERT INTO [cmp].[GraduationFact]
+CREATE PROCEDURE [cmp].[spLoadGraduationFact] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[GraduationFact]
            ([DemographicKey]
            ,[GraduationStatusKey]
 		   ,[SchoolKey]
@@ -10,4 +11,4 @@ SELECT DemographicId,
 	  SchoolId,
 	  SchoolYear,
 	  GraduationStudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[GraduationFact]
+FROM [cmp].[GraduationFact]

@@ -1,6 +1,5 @@
-/* STUDENT ASSESSMENT PERFORMANCE FOR SAT AND ACT TAKEN */
-
-INSERT INTO [cmp].[AssessmentFact]
+CREATE PROCEDURE [cmp].[spLoadAssessmentFact_WIDA] AS
+INSERT INTO [$(CompassDataMart)].[cmp].[AssessmentFact]
            ([DemographicKey]
            ,[SchoolKey]
            ,[SchoolYearKey]
@@ -17,7 +16,7 @@ SELECT  DemographicId,
 		PerformanceKey,
 		GoodCauseExemptionKey,
 		StudentCount
-FROM [$(OdsDatabaseServer)].[$(OdsDatabaseName)].[cmp].[AssessmentFact_WIDA]
+FROM [cmp].[AssessmentFact_WIDA]
 OPTION (maxrecursion 0)
       
  
