@@ -72,8 +72,12 @@ SELECT SSA.[StudentUSI]
 			WHEN SE.[HispanicLatinoEthnicity] = 0 AND SE.Racecount = 1 AND SE.Ethnicity = 'Black - African American' THEN  'Black'
 			WHEN SE.[HispanicLatinoEthnicity] = 0 AND SE.Racecount = 1 AND SE.Ethnicity = 'Native Hawaiian - Pacific Islander' THEN  'Native Hawaiian or Other Pacific Islander'
 		END AS Ethnicity
-	  ,CASE WHEN GLT.Description IN ('Tenth grade', 'Ninth grade', 'Eleventh grade', 'Twelfth grade') THEN CAST(SSA.[GraduationSchoolYear] AS NVARCHAR(15))
-			 END AS ExpectedGraduationYear
+	  ,CASE WHEN GLT.Description IN ('Tenth grade', 'Ninth grade', 'Eleventh grade', 'Twelfth grade') AND SSA.GraduationSchoolYear IS NOT NULL THEN CAST(SSA.[GraduationSchoolYear] AS NVARCHAR(15))
+			WHEN GLT.Description = 'Ninth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 3) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Tenth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 2) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Eleventh grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 1) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Twelfth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST(DS.SchoolYear  AS NVARCHAR(15))
+		END AS ExpectedGraduationYear
 	  ,CASE WHEN P.Description = 'Special Education' THEN 'Special Education'
 			ELSE 'General Education'
 		END AS SpecialEducationStatus
@@ -137,11 +141,15 @@ GROUP BY SSA.[StudentUSI]
 			WHEN SE.[HispanicLatinoEthnicity] = 0 AND SE.Racecount = 1 AND SE.Ethnicity = 'Black - African American' THEN  'Black'
 			WHEN SE.[HispanicLatinoEthnicity] = 0 AND SE.Racecount = 1 AND SE.Ethnicity = 'Native Hawaiian - Pacific Islander' THEN  'Native Hawaiian or Other Pacific Islander'
 		END 
-	  ,CASE WHEN GLT.Description IN ('Tenth grade', 'Ninth grade', 'Eleventh grade', 'Twelfth grade') THEN CAST(SSA.[GraduationSchoolYear] AS NVARCHAR(15))
-			 END 
 	  ,CASE WHEN P.Description = 'Special Education' THEN 'Special Education'
 			ELSE 'General Education'
 		END 
+	  ,CASE WHEN GLT.Description IN ('Tenth grade', 'Ninth grade', 'Eleventh grade', 'Twelfth grade') AND SSA.GraduationSchoolYear IS NOT NULL THEN CAST(SSA.[GraduationSchoolYear] AS NVARCHAR(15))
+			WHEN GLT.Description = 'Ninth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 3) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Tenth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 2) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Eleventh grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST((DS.SchoolYear + 1) AS NVARCHAR(15))
+			WHEN GLT.Description = 'Twelfth grade' AND  SSA.GraduationSchoolYear IS NULL THEN CAST(DS.SchoolYear  AS NVARCHAR(15))
+		END
 
 
 )
