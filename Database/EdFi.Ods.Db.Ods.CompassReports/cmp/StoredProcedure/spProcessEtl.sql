@@ -17,4 +17,4 @@ EXEC [cmp].[spLoadGraduationFact]
 
 select LocalEducationAgencyId
 FROM edfi.LocalEducationAgency
-FOR XML PATH
+FOR XML PATH ('LocalEducationAgency'), ROOT ('root')
