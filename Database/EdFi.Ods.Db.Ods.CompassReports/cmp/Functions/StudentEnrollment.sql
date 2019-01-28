@@ -108,6 +108,7 @@ LEFT JOIN [edfi].[ProgramType] P
 	AND P.Description = 'Special Education'
 LEFT JOIN Multiracial M
 	ON M.[StudentUSI] = S.[StudentUSI]
+WHERE SSA.ExitWithdrawDate IS NULL AND SSA.ExitWithdrawTypeDescriptorId IS NULL
 GROUP BY SSA.[StudentUSI]
 		,SSA.[SchoolId]
 		,CASE WHEN SFSET.Description = 'Free' THEN 'Free meals'
